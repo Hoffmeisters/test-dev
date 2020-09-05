@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   		resources :payloads
   	end
   end
-
     # Sidekiq
   require 'sidekiq/web'
   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
