@@ -1,15 +1,15 @@
 class DeliveryCenterApiWorker
   include Sidekiq::Worker
 
-  def perform(order_body)
+  def perform(params)
     begin
       response = RestClient.post(
-        DelieveryCenterUrlHelper.url,
-        order_body,
+        DeliveryCenterUrlHelper.url,
+        params.to_json,
         content_type: :json
       )
       response.code == 200
-      response.code
+      response
     rescue RestClient::ExceptionWithResponse => e
       e.response
     end
