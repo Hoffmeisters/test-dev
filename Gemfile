@@ -11,12 +11,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 3.2', '<= 3.2.5'
 # Simple HTTP and REST client for Ruby
 gem 'rest-client'
-# Simple, efficient background processing for Ruby
-gem 'sidekiq', '~> 4.1', '>= 4.1.3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

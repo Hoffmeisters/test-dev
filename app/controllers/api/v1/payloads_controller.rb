@@ -2,7 +2,7 @@ class Api::V1::PayloadsController < ApplicationController
 skip_before_action :verify_authenticity_token
 
   def create
-    
+
     if params[:id].present?
       payload = Payload.find(params[:id])
     end    
@@ -15,9 +15,9 @@ skip_before_action :verify_authenticity_token
     payload.order_items = params[:order_items] 
 
     if payload.save
-      parse_payload = PayloadParserService.new
-      parsed_payload = parse_payload.parse_payload_data(payload)
-      response = DeliveryCenterApiWorker.new.perform(parsed_payload)
+      parsed_payload = PayloadParserService.new.parse_payload_data(payload)
+
+      response = DeliveryCenterApiService.new.perform(parsed_payload)
       if response.code == 200
         render json: {status: 'SUCCESS', message: "Delivery completed, confirmation code: #{response}", data: parsed_payload}, status: :ok
       else

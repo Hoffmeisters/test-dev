@@ -1,5 +1,4 @@
-class DeliveryCenterApiWorker
-  include Sidekiq::Worker
+class DeliveryCenterApiService
 
   def perform(params)
     begin
