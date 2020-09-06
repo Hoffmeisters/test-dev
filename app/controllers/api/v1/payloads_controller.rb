@@ -4,7 +4,7 @@ skip_before_action :verify_authenticity_token
   def create
 
     if params[:id].present?
-      payload = Payload.find(params[:id])
+      payload = Payload.where(params[:id].to_i)
     end    
     unless payload.present?
       payload = Payload.new(payload_params)
